@@ -1,0 +1,1153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Course Outline</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p><span style="color: #000000;font-size: 166%;font-family: SansSerif, sans-serif; ">Course Outline</span>
+<ul><li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">About</span>
+<ul><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">README</span>
+
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">LICENCE</span>
+
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">LIST OF CONTRIBUTORS</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; font-weight: bold; ">Beginner</span>
+<ul><li><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">For: Never been involved with aeromodelling before.</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Definitions of aeromodelling and UAV</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">List of tutorials for complete beginners, with quickstarts on each part of the required knowledge and common sense</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">List of tutorials for complete beginners of the prerequisites of math, physics and crafting</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">List of online demonstrations for science popularization</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; font-weight: bold; ">Intermediate</span>
+<ul><li><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">For: Flew for 100+ hours and learning basic theories of model aircraft and their primitive linkages to empirical observations</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Technical definitions and relations</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">&nbsp;</span>
+
+</li>
+
+</ul><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Basic guidelines and tips for general aeromodellers</span>
+</li>
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; font-weight: bold; ">Team</span>
+<ul><li><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Summarized from professional books about aviation, featuring some advanced techniques not covered by normal tutorials. Some mayt require the basic of 1st year mathematics in university</span>
+<p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Researcher</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Chapters for UAV teams to study and design aircraft independently</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Contents</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Atmospheric properties</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Kinetics</span>
+<ul><li><span style="color: #111111;">Contents</span>
+<ul><li><span style="color: #111111;">Definition</span>
+<ul><li><span style="color: #111111;">Motion</span>
+<ul><li><span style="color: #111111;">Translational</span>
+
+</li>
+<li><span style="color: #111111;">Rotational</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Reference</span>
+
+</li>
+<li><span style="color: #111111;">Terms</span>
+<ul><li><span style="color: #111111;">Position</span>
+
+</li>
+<li><span style="color: #111111;">Velocity</span>
+
+</li>
+<li><span style="color: #111111;">Acceleration</span>
+
+</li>
+<li><span style="color: #111111;">Connection between terms</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Steady Translational analysis</span>
+<ul><li><span style="color: #111111;">Fixed Cl and Cd</span>
+<ul><li><span style="color: #111111;">~Climb angle</span>
+<ul><li><span style="color: #111111;">Free Gliding</span>
+
+</li>
+<li><span style="color: #111111;">Steady horizontal flight</span>
+
+</li>
+<li><span style="color: #111111;">Climbing</span>
+<ul><li><span style="color: #111111;">General equations</span>
+
+</li>
+<li><span style="color: #111111;">Special cases</span>
+<ul><li><span style="color: #111111;">Max climbing rate with certain Cl and Cd</span>
+
+</li>
+<li><span style="color: #111111;">Max climbing angle with max force requires</span>
+
+</li>
+<li><span style="color: #111111;">Max climbing angle with max power required</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">General 3DOF</span>
+<ul><li><span style="color: #111111;">Translational</span>
+<ul><li><span style="color: #111111;">Quasi-steady flight analysis</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">General 6DOF</span>
+
+</li>
+<li><span style="color: #111111;">Solving Dynamic models: how flight simulators work</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Provide connection between flight mechanics parameters.</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Aircraft geometrical aspects</span>
+<ul><li><span style="color: #111111;">Aircraft Geometry</span>
+<ul><li><span style="color: #111111;">Aspects</span>
+<ul><li><span style="color: #111111;">1D</span>
+<ul><li><span style="color: #111111;">Reference Length</span>
+<ul><li><span style="color: #111111;">length;width;height</span>
+
+</li>
+<li><span style="color: #111111;">wing span;halfspan</span>
+
+</li>
+<li><span style="color: #111111;">Chord</span>
+<ul><li><span style="color: #111111;">Root Chord</span>
+
+</li>
+<li><span style="color: #111111;">Tip Chord</span>
+
+</li>
+<li><span style="color: #111111;">Mean Geometric Chord (MGC)</span>
+<ul><li><span style="color: #111111;">MGC=Area/b</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Mean Aerodynamic Chord (MAC)</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">location</span>
+<ul><li><span style="color: #111111;">xCG</span>
+<ul><li><span style="color: #111111;">location of center of gravity</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">xNP</span>
+<ul><li><span style="color: #111111;">location of neutral point</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">xF</span>
+<ul><li><span style="color: #111111;">Center of force</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Sweep distance</span>
+
+</li>
+<li><span style="color: #111111;">Radius</span>
+
+</li>
+<li><span style="color: #111111;">Levers</span>
+<ul><li><span style="color: #111111;">xn-xCG</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Reference Angle</span>
+<ul><li><span style="color: #111111;">Mounting Angle</span>
+
+</li>
+<li><span style="color: #111111;">Sweep Angle</span>
+
+</li>
+<li><span style="color: #111111;">Dihedral/ anhedral</span>
+
+</li>
+<li><span style="color: #111111;">Twist Angle</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">2D</span>
+<ul><li><span style="color: #111111;">Reference Area</span>
+<ul><li><span style="color: #111111;">Sectional Area</span>
+
+</li>
+<li><span style="color: #111111;">Wetted Area</span>
+
+</li>
+<li><span style="color: #111111;">Shadow Area</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">3D</span>
+<ul><li><span style="color: #111111;">Volume</span>
+<ul><li><span style="color: #111111;">Total Volume</span>
+
+</li>
+<li><span style="color: #111111;">Capacity</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Nondimensionized quantities</span>
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #111111;">Static Margin</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">(Xcg-Xnp)/Chord</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Volume Coefficients</span>
+<ul><li><span style="color: #111111;">Vertical tail Volume coefficient</span>
+
+</li>
+<li><span style="color: #111111;">Horizontal tail Volume coefficient</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Ratios</span>
+<ul><li><span style="color: #111111;">Taper Ratio</span>
+
+</li>
+<li><span style="color: #111111;">Relative thickness</span>
+
+</li>
+<li><span style="color: #111111;">Aspect Ratio</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Aerodynamics</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Contents</span>
+<ul><li><span style="color: #111111;">Definition</span>
+<ul><li><span style="color: #111111;">forces by air</span>
+<ul><li><span style="color: #111111;">Perpendicular to the direction of velocity: lift</span>
+
+</li>
+<li><span style="color: #111111;">Opposite the velocity: drag</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">AoA</span>
+<ul><li><span style="color: #111111;">Angle of attack</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">pressure coefficients</span>
+<ul><li><span style="color: #111111;">Cl,Cd,Cp</span>
+<ul><li><span style="color: #111111;">Cl = (Sectional Lift)/(q*c)</span>
+
+</li>
+<li><span style="color: #111111;">Cd = (Sectional Drag)/(q*c)</span>
+
+</li>
+<li><span style="color: #111111;">$$F=q*Cp*S_ref$$</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Kinetic energy density</span>
+<ul><li><span style="color: #111111;">q = 1/2 *rho*v^2</span>
+
+</li>
+<li><span style="color: #111111;">Bernouli's law q+p = constant</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Reynold number</span>
+<ul><li><span style="color: #111111;">Re = v* L_ref/v_s</span>
+
+</li>
+<li><span style="color: #111111;">v_s viscosity</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Calculation</span>
+<ul><li><span style="color: #111111;">Dynamic estimation at certain circumstances</span>
+<ul><li><span style="color: #111111;">F~Cp,q at certain S_ref</span>
+<ul><li><span style="color: #111111;">Cp ~AoA,Re, M</span>
+<ul><li><span style="color: #111111;">Thin Airfoil theory</span>
+<ul><li><span style="color: #111111;">Cl = Cla*(AoA - AoA0)</span>
+<ul><li><span style="color: #111111;">Cla: lift Coefficient Gradient</span>
+
+</li>
+<li><span style="color: #111111;">AoA0: Zero_lift Angle of Attack</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Cd =Cd0+Cdw+Cdi</span>
+<ul><li><span style="color: #111111;">Cd0: Zero lift &nbsp;drag coefficient</span>
+
+</li>
+<li><span style="color: #111111;">Cdi: Lift- induced drag coefficient </span>
+
+</li>
+<li><span style="color: #111111;">Cdw: shock wave drag coefficient</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">q~rho,v</span>
+
+</li>
+<li><span style="color: #111111;">S_ref: see geometrical aspects</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Cl.Cd at certain kinetic state</span>
+<ul><li><span style="color: #111111;">Case 1; calculation of ;lift and drag coefficient by towing gliders</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Using CFD</span>
+<ul><li><span style="color: #111111;">Definition</span>
+<ul><li><span style="color: #111111;">Computer Fluid Dynamics</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Practical</span>
+<ul><li><span style="color: #111111;">General steps</span>
+<ul><li><span style="color: #111111;">Define geometry</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+<span style="color: #111111;">Generate mesh</span>
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Set up conditions</span>
+
+</li>
+<li><span style="color: #111111;">Variable output</span>
+
+</li>
+<li><span style="color: #111111;">Simulation Control</span>
+
+</li>
+<li><span style="color: #111111;">Run Analysis</span>
+
+</li>
+<li><span style="color: #111111;">Data tidying and presentation</span>
+<ul><li><span style="color: #111111;">numerical</span>
+<ul><li><span style="color: #111111;">F, Torque</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Graphical</span>
+<ul><li><span style="color: #111111;">Distribution contour</span>
+
+</li>
+<li><span style="color: #111111;">Isosurface</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">List of software demonstrations</span>
+<ul><li><span style="color: #111111;">SimScale</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Experiments</span>
+<ul><li><span style="color: #111111;">wind tunnel experiment</span>
+
+</li>
+<li><span style="color: #111111;">in air experiment</span>
+<ul><li><span style="color: #111111;">glider towing experiment</span>
+<ul><li><span style="color: #111111;">Based on 'kinetics'</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Optimization Targets</span>
+<ul><li><span style="color: #111111;">Lift to drag ratio</span>
+<ul><li><span style="color: #111111;">Fl/Fd=Cl/Cd=l/h</span>
+<ul><li><span style="color: #111111;">Physical meaning</span>
+<ul><li><span style="color: #111111;">Maximum gliding ratio</span>
+
+</li>
+<li><span style="color: #111111;">Minimum thrust required to lift certain weight</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Methods</span>
+<ul><li><span style="color: #111111;">From thin airfoil theory</span>
+<ul><li><span style="color: #111111;">max k occurs when</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Lift^(3/2)/Drag ration</span>
+<ul><li><span style="color: #111111;">Cl^(3/2)/Cd</span>
+<ul><li><span style="color: #111111;">Physical Meaning</span>
+<ul><li><span style="color: #111111;">Minimum power required to lift certain weight</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Aerodynamic properties of plane</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Structual</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Power system</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Mission system</span>
+<ul><li><span style="color: #111111;">FPV system</span>
+
+</li>
+<li><span style="color: #111111;">Geolocation system</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Control system</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Builder</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Chapter for necessary crafting skills to assemble and build air vehicles</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Contents</span>
+<ul><li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Airframe and accessories</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Fuselage</span>
+<ul><li><span style="color: #111111;">Canopy</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Main</span>
+
+</li>
+<li><span style="color: #111111;">Cockpit</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Wing</span>
+<ul><li><span style="color: #111111;">Stablizer</span>
+
+</li>
+<li><span style="color: #111111;">Main</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Landing Gear</span>
+<ul><li><span style="color: #111111;">Type</span>
+<ul><li><span style="color: #111111;">Forward 3 point</span>
+
+</li>
+<li><span style="color: #111111;">Backward 3 point</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Power system</span>
+<ul><li><span style="color: #111111;">Electrical</span>
+<ul><li><span style="color: #111111;">Propeller/Ducted Fan</span>
+<ul><li><span style="color: #111111;">Material</span>
+<ul><li><span style="color: #111111;">Plastic</span>
+
+</li>
+<li><span style="color: #111111;">Nylon</span>
+
+</li>
+<li><span style="color: #111111;">Aluminum</span>
+
+</li>
+<li><span style="color: #111111;">Carbon</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">electric Motor</span>
+
+</li>
+<li><span style="color: #111111;">Electric Speed Controller (ESC)</span>
+
+</li>
+<li><span style="color: #111111;">Battery</span>
+
+</li>
+<li><span style="color: #111111;">Plug</span>
+<ul><li><span style="color: #111111;">Safety</span>
+
+</li>
+<li><span style="color: #111111;">Type</span>
+<ul><li><span style="color: #111111;">T-Plug</span>
+
+</li>
+<li><span style="color: #111111;">XT60</span>
+
+</li>
+<li><span style="color: #111111;">XT90</span>
+
+</li>
+<li><span style="color: #111111;">EC3</span>
+
+</li>
+<li><span style="color: #111111;">DC3</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Gasoline</span>
+
+</li>
+<li><span style="color: #111111;">Nitro</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Control System</span>
+<ul><li><span style="color: #111111;">Transmitter (TX)</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Receiver (RX)</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Other</span>
+
+</li>
+<li><span style="color: #111111;">Layout</span>
+<ul><li><span style="color: #111111;">Conventional</span>
+
+</li>
+<li><span style="color: #111111;">Canard</span>
+
+</li>
+<li><span style="color: #111111;">3 Surface</span>
+
+</li>
+<li><span style="color: #111111;">Flying Wing</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Material properties</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Basic Guideline</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Crafting Skill</span>
+<ul><li><span style="color: #111111;">Knives/ blades</span>
+
+</li>
+<li><span style="color: #111111;">Saw</span>
+
+</li>
+<li><span style="color: #111111;">File</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Empirical usage of structures</span>
+
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Adhesives</span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Classifications and usage</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+<ul><li><span style="color: #111111;">White glue</span>
+
+</li>
+<li><span style="color: #111111;">PVA</span>
+
+</li>
+<li><span style="color: #111111;">Superglue</span>
+
+</li>
+<li><span style="color: #111111;">Hot glue</span>
+
+</li>
+<li><span style="color: #111111;">UHU foam glue</span>
+
+</li>
+<li><span style="color: #111111;">Z-poxy</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Automated machine</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Strength Check</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Airframe modification</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Operator</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Chapters for operators to test, tune and analyze the aircraft with practical operation skills</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Contents</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Safety</span>
+<ul><li><span style="color: #111111;">Pre-flight checklist</span>
+
+</li>
+<li><span style="color: #111111;">Site usage</span>
+
+</li>
+<li><span style="color: #111111;">Flight risk and safety</span>
+<ul><li><span style="color: #111111;">Maiden</span>
+
+</li>
+<li><span style="color: #111111;">Test flight</span>
+
+</li>
+<li><span style="color: #111111;">Emergency executions</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Crash check</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Simulator training and tuning</span>
+
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Remote control</span>
+<ul><li><span style="color: #111111;">Remote control settings</span>
+
+</li>
+<li><span style="color: #111111;">Aerobatics</span>
+
+</li>
+<li><span style="color: #111111;">Tuning</span>
+
+</li>
+<li><span style="color: #111111;">Safety</span>
+
+</li>
+<li><span style="color: #111111;">Basic operations</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Gyro</span>
+<ul><li><span style="color: #111111;">Gyro settings</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Autopilot</span>
+
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul><p><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Designer</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Chapters for design project control and management</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Relavant design considerations</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Contents</span>
+<ul><li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Coordination and cooperation</span>
+<ul><li><span style="color: #111111;">Target</span>
+
+</li>
+<li><span style="color: #111111;">General workflow</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">General Methodology</span>
+
+</li>
+<li><span style="color: #111111;">Hardware/software solutions</span>
+<ul><li><span style="color: #111111;">Softare formats import/export</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;font-family: SansSerif, sans-serif; font-weight: bold; ">Communication</span>
+<ul><li><span style="color: #111111;">Data transfer within a design team</span>
+
+</li>
+<li><span style="color: #111111;">Problemshooting</span>
+
+</li>
+<li><span style="color: #111111;">Compromises</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul></li>
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">History</span>
+<ul><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">History of model aircraft sporting</span>
+
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">History of development of unmanned aircraft</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #0033ff;font-size: 150%;font-family: SansSerif, sans-serif; ">Support</span>
+<ul><li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Air restrictions, sites and clubs</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">Where to find the informations</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_5" class="foldclosed" onClick="show_folder('1_5')" style="POSITION: absolute">+</span> <span id="hide1_5" class="foldopened" onClick="hide_folder('1_5')">-</span>
+<span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Online supports</span>
+<ul id="fold1_5" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">List of aircraft tutorial sites</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">List of software support sites relevant to aeromodelling</span>
+
+</li>
+<li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">List of forums</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;font-size: 133%;font-family: SansSerif, sans-serif; ">Read more</span>
+<ul><li><span style="color: #990000;font-size: 116%;font-family: SansSerif, sans-serif; ">References</span>
+<ul><li><span style="color: #111111;">&nbsp;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>
