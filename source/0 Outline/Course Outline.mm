@@ -50,7 +50,7 @@
 <node COLOR="#0033ff" CREATED="1542855667766" ID="ID_656720673" MODIFIED="1542954560202" POSITION="right" TEXT="Team">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
 <font BOLD="true" NAME="SansSerif" SIZE="18"/>
-<node COLOR="#00b439" CREATED="1542857343838" ID="ID_238457145" MODIFIED="1542953901677" TEXT="Summarized from professional books about aviation, featuring some advanced techniques not covered by normal tutorials. Some mayt require the basic of 1st year mathematics in university">
+<node COLOR="#00b439" CREATED="1542857343838" ID="ID_238457145" MODIFIED="1543178053651" TEXT="Summarized from professional books about aviation, featuring some advanced techniques not covered by normal tutorials. Some may require the basic of 1st year mathematics in university">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
@@ -65,7 +65,7 @@
 <node COLOR="#111111" CREATED="1542931994566" ID="ID_1897351195" MODIFIED="1542955018411" TEXT="Atmospheric properties">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 </node>
-<node COLOR="#111111" CREATED="1542932003201" ID="ID_1901135062" MODIFIED="1542955194297" TEXT="Kinetics">
+<node COLOR="#111111" CREATED="1542932003201" FOLDED="true" ID="ID_1901135062" MODIFIED="1543178012843" TEXT="Kinetics">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <node BACKGROUND_COLOR="#00ffff" COLOR="#111111" CREATED="1542532097786" ID="ID_1670053171" MODIFIED="1542955024184" TEXT="Contents">
 <node COLOR="#111111" CREATED="1542532117166" ID="ID_1170701957" MODIFIED="1542953901700" TEXT="Definition">
@@ -109,7 +109,7 @@
 </node>
 <node COLOR="#111111" CREATED="1542953501281" ID="ID_1156479359" MODIFIED="1542953901713" TEXT="Provide connection between flight mechanics parameters."/>
 </node>
-<node COLOR="#111111" CREATED="1542932011808" ID="ID_1485801357" MODIFIED="1542955030446" TEXT="Aircraft geometrical aspects">
+<node COLOR="#111111" CREATED="1542932011808" FOLDED="true" ID="ID_1485801357" MODIFIED="1543178009935" TEXT="Aircraft geometrical aspects">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <node BACKGROUND_COLOR="#33ff33" COLOR="#111111" CREATED="1542529472699" ID="ID_1281292217" MODIFIED="1542953901714" TEXT="Aircraft Geometry">
 <node COLOR="#111111" CREATED="1542529563515" ID="ID_1930989698" MODIFIED="1542953901714" STYLE="bubble" TEXT="Aspects">
@@ -439,7 +439,7 @@
 <node COLOR="#111111" CREATED="1542932509386" ID="ID_1480307878" MODIFIED="1542953901776" TEXT="Maiden"/>
 <node COLOR="#111111" CREATED="1542932614353" ID="ID_328673028" MODIFIED="1542953901776" TEXT="Test flight"/>
 <node COLOR="#111111" CREATED="1542932548772" ID="ID_485442077" MODIFIED="1542953901777" TEXT="Emergency executions"/>
-<node COLOR="#111111" CREATED="1542932627837" ID="ID_1264731947" MODIFIED="1542953901777" TEXT=""/>
+<node COLOR="#111111" CREATED="1542932627837" ID="ID_1264731947" MODIFIED="1543178941594" TEXT="Priority"/>
 </node>
 <node COLOR="#111111" CREATED="1542932555762" ID="ID_47187896" MODIFIED="1542953901777" TEXT="Crash check"/>
 </node>
