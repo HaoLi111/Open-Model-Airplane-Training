@@ -1,5 +1,11 @@
 # Open-UAV-Course-for-Team-FW
 
+# Warning
+
+This project was intended for high school aeromodeling teams and has not been updated for a while.
+
+#
+
 NOTE: THE MAIN STRUCTURE WILL BE DECIDED ON 26TH MOV 2018. SOME OF MY LOCAL MATERIALS WILL BE UPLOADED BEFORE 27TH. SORRY FOR THE INCONVENIENCE.
 
 OpenUAVcourseForTeam-FW  OPEN STANDARDIZED COURSE FOR FIXED WING UAV TEAM DEVELOPMENT  
