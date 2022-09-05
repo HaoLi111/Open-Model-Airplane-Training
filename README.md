@@ -1,4 +1,4 @@
-# Open-UAV-Course-for-Team-FW
+# Open-Model-Airplane-Training
 
 # Warning
 
